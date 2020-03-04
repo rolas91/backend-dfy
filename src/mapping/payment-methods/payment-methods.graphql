@@ -1,0 +1,50 @@
+input PaymentMethodInput {
+    id: Int
+    name:String
+    pay_commissions:Boolean
+    active:Boolean
+    urlImg:String
+}
+
+type PaymentMethodDto {
+    id: Int
+    name:String
+    pay_commissions:Boolean
+    active:Boolean
+    urlImg:String
+    currency:[CurrencyWhitWalletDto]
+}
+
+type PaymentMethodsDto {
+    cash: CashPaymentDto
+    alypay: AlypayPaymentDto
+}
+
+type CashPaymentDto {
+    id: Int
+    name: String
+    pay_commissions: Boolean
+    active: Boolean
+    urlImg: String
+    currency: CurrencyDto
+}
+
+
+type AlypayPaymentDto {
+    id: Int
+    name: String
+    pay_commissions: Boolean
+    active: Boolean
+    urlImg: String
+    bitcoin: Bitcoin
+    litecoin: LiteCoin
+    dash: Dash
+    alycoin: Alycoin
+    ethereum: Ethereum
+}
+
+type Query {
+    PaymentMethod: [PaymentMethodDto]
+    searchPaymentMethod(id:Int): PaymentMethodDto
+    PaymentMethodActive(total:Float!,userId:Int!, lat:Float!, long:Float!):PaymentMethodsDto
+}

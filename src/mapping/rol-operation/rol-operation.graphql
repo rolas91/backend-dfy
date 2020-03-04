@@ -1,0 +1,21 @@
+type RolOperationDto {
+    id: Int
+    commerceOperation: CommerceOperationsDto
+    commerceRol: CommerceRolDto
+}
+
+input RolOperationInput {
+    id: Int
+    commerceOperationID: Int!
+    commerceRolID: Int!
+}
+
+type Query {
+    getAllRolOperation: [RolOperationDto!]!
+    getAllRolOperationWithPagination(page: Int!): [RolOperationDto!]!
+    getAllRolOperationById(id: Int!): RolOperationDto!
+}
+
+type Mutation {
+    registerRolOperation(input: RolOperationInput!): RolOperationDto!
+}

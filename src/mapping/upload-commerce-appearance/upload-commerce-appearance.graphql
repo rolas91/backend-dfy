@@ -1,0 +1,14 @@
+type UploadCommerceAppearanceDto {
+    url_img_commerceoutside_one: String
+    url_img_commerceoutside_two: String
+    url_img_commerceinside_one: String
+    url_img_commerceinside_two: String
+    url_img_commerceinside_three: String
+    url_img_commerceinside_four: String
+    skiperCommerce: CommerceDto
+}
+
+
+type Query {
+    getAllCommerceAppearance(id:Int!): UploadCommerceAppearanceDto!
+}

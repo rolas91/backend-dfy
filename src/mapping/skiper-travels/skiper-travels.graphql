@@ -1,0 +1,105 @@
+input SkiperTravelsInput {
+    id: Int
+    idusers: Int!
+    iddriver: Int!
+    lat_initial: Float!
+    lng_initial: Float!
+    lat_final_seggested: Float
+    lng_final_seggested: Float
+    lat_final: Float!
+    lng_final: Float!
+    date_init: DateTime
+    distance: Float!
+    time: Float!
+    Total: Float 
+    address_initial: String!
+    address_final: String!
+    address_suggested: String
+    idcurrency: Int!
+    idpayment_methods: Int!
+    categoryId: Int
+}
+
+input ValidateSkiperDriveInput {
+    iddriver: Int!  
+    idcategoryTravel:Int!  
+    lat_initial:Float!
+    lng_initial:Float!
+    date_init:DateTime
+    distance:Float!
+    time: Float!
+    Total:Float
+    idcurrency:Int!
+}
+
+
+type SkiperTravelsDto {
+    id: Int
+    lat_initial: Float
+    lng_initial: Float
+    lat_final_seggested: Float
+    lng_final_seggested: Float
+    lat_final: Float
+    lng_final: Float
+    date_init: DateTime
+    date_final: DateTime
+    distance: Float
+    total: Float
+    address_initial: String
+    address_final: String
+    address_suggested: String
+    duration: Float
+    skiperTravelsTracing: [SkiperTravelsTracingDto]
+    users: UserDto
+    skiperagent: SkiperAgentDto
+    currency: CurrencyDto
+    paymentMethods: PaymentMethodDto
+    skipercattravel: SkiperCatTravelDto
+}
+
+type TravelTarifaDTo {
+    pricebase: Float
+    priceminute: Float
+    priceckilometer: Float
+    priceminimun: Float
+    currencyID:Int
+    symbol:String
+}
+
+type AllCategoryDto {
+    silver:SilverDto
+    golden: GoldenDto
+    vip:VipDto
+    president:PresidentDto   
+}
+
+input ValidateUserInput {
+    userId: Int
+    driverId:Int
+    categoryTravelId: Int
+    latInitial: Float
+    lngInitial: Float
+    dateInit: DateTime
+    distance: Float
+    time: Float
+    Total: Float
+    ip: String
+    idcurrency: Int
+}
+
+
+type Query {
+    getAllSkiperTravels: [SkiperTravelsDto!]
+    CalculateTariff(ip: String!, idcategoriaviaje: Int!, lat:Float!, lng:Float!): TravelTarifaDTo!
+    CategoryTravelsWhitPrice(lat:Float!, lng:Float!, distance:Float!, duration:Float!): AllCategoryDto
+    getTravels(idagent: Int!):[SkiperTravelsDto!]
+    getTravelByAgentId(idagent: Int!): SkiperTravelsDto!
+    getTravelByUserId(iduser: Int!): SkiperTravelsDto
+    getAllTravels:[SkiperTravelsDto!]
+}
+
+type Mutation {
+    GenerateTravel(inputviaje: SkiperTravelsInput!, ip:String!):SkiperTravelsDto!
+    ValidateDriveAvailable(input: ValidateSkiperDriveInput):Boolean
+    ValidateUser(input:ValidateUserInput):Boolean
+}

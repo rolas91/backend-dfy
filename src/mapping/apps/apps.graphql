@@ -1,0 +1,22 @@
+input AppsInput {
+    id: Int
+    name: String!
+    description: String!
+}
+
+type AppsDto {
+    id: Int!
+    name: String
+    description: String
+    appCities: [AppCitiesDto]
+}
+
+type Query {
+    apps: [AppsDto!]!
+    searchApp(id: Int): AppsDto
+}
+
+type Mutation {
+    registerApp(input: AppsInput): AppsDto!
+    updateApp(input: AppsInput!): AppsDto
+ }

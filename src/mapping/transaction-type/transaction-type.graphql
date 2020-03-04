@@ -1,0 +1,15 @@
+input TransactionTypeInput {
+    id: Int!
+    name: String!
+    sign: Float!
+}
+
+type TransactionTypeDto {
+    id: Int!
+    name: String!
+    sign: Float!
+}
+type Query {
+    getAllTransactionType: [TransactionTypeDto!]!
+    searchTransactionType(id: Int!): TransactionTypeDto
+}

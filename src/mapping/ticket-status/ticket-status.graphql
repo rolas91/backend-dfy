@@ -1,0 +1,19 @@
+input TicketStatusInput {
+    id: Int
+    name: String!
+}
+
+type TicketStatusDto {
+    id: Int
+    name: String!
+}
+
+type Query {
+    ticketstatus: [TicketStatusDto!]!
+    searchTicketStatus(id: Int): TicketStatusDto
+}
+
+type Mutation {
+    registerTicketStatus(input: TicketStatusInput): TicketStatusDto!
+    updateTicketStatus(input: TicketStatusInput!): TicketStatusDto!
+ }

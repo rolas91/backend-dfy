@@ -1,0 +1,21 @@
+
+input OptionAddonInput {
+    id: Int
+    name: String!
+    description: String
+    extraPrice: Int
+    skiperProductsID: Int!
+}
+
+type OptionAddonDto {
+    id: Int
+    name: String
+    description: String
+    extraPrice: Int
+    skiperProducts: SkiperProductCommerceDto
+}
+
+type Query {
+    optionsAddons:[OptionAddonDto!]!
+    optionAddonById(id:Int) :OptionAddonDto!
+}

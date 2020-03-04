@@ -1,0 +1,17 @@
+runtime: nodejs
+env: flex
+# make sure to include code below
+
+env_variables:
+  DATABASE_HOST: 34.94.192.76
+  DATABASE_PORT: 3306
+  DATABASE_USERNAME: root
+  DATABASE_PASSWORD: rolas1991
+  DATABASE_NAME: alysystem_db
+  DATABASE_SOCKET: "/cloudsql/backend-alysystem:us-west2:alysystem-db"
+  PRIVATE_KEY: supersecretamazingkey
+
+beta_settings:
+   cloud_sql_instances: "backend-alysystem:us-west2:alysystem-db"
+  # Timezone 
+  #TZ: America/Argentina/Buenos_Aires 

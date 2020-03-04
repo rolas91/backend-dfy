@@ -1,0 +1,34 @@
+input SkiperOrderDetailInput {
+    id: Int
+    quantity: Int!
+    price: Int!
+    discount: Int!
+    size: String!
+    addon: String!
+    extraPrice: Int!
+    orderID: Int!
+    itemID: Int!
+}
+
+type SkiperOrderDetailDto {
+    idorder: Int!
+    iditem: Int!
+    quantity: Int
+    price: Int
+    discount: Int
+    size: String
+    addon: String
+    extraPrice: Int
+    skiperOrder: SkiperOrderDto!
+    skiperProductCommerce: SkiperProductCommerceDto!
+}
+
+type Query {
+    skiperorderdetail: [SkiperOrderDetailDto!]!
+    searchSkiperOrderDetail(id: Int): SkiperOrderDetailDto
+}
+
+type Mutation {
+    registerSkiperOrderDetail(input: SkiperOrderDetailInput): SkiperOrderDetailDto!
+    updateSkiperOrderDetail(input: SkiperOrderDetailInput!): SkiperOrderDetailDto
+}

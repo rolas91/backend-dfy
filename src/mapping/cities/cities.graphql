@@ -1,0 +1,14 @@
+
+type citiesDto {
+  id: Int
+  name: String
+  country: countrieDto
+  users:[UserDto]
+  appCities: [AppCitiesDto]
+}
+
+type Query {
+  cities: [citiesDto!]!
+  searchCityByCountryId(id: Int!): [citiesDto!]!
+  searchCity(id: Int!): citiesDto!
+}

@@ -1,0 +1,36 @@
+input CurrencyInput {
+    id: Int
+    name: String!
+    idcountry: Int
+    isCrypto: Boolean
+    iso: String
+    url_img: String
+}
+
+type CurrencyDto {
+    id: Int!
+    name: String
+    idcountry: Int
+    isCrypto: Boolean
+    iso: String
+    url_img: String
+    country:countrieDto   
+}
+
+type CurrencyWhitWalletDto {
+    id: Int!
+    name: String
+    idcountry: Int
+    isCrypto: Boolean
+    iso: String
+    url_img: String
+    country:countrieDto
+    skiperwallet: [SkiperWalletDto]
+}
+
+type Query {
+    currency: [CurrencyDto!]!
+    Cryptocurrency: [CurrencyDto!]!
+    CryptocurrencyForTransfer: [CurrencyDto!]!
+    searchcurrency(id:Int): CurrencyDto
+}

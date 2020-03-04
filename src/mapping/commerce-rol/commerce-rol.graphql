@@ -1,0 +1,20 @@
+type CommerceRolDto {
+    id: Int
+    name: String
+}
+
+input CommerceRolInput {
+    id: Int
+    name: String!
+}
+
+type Query {
+    getAllCommerceRoles:[CommerceRolDto!]!
+    getAllCommerceRoleById (id: Int!): CommerceRolDto
+}
+
+type Mutation {
+    registerCommerceRole(input: CommerceRolInput!):CommerceRolDto!
+    updateCommerceRole(input: CommerceRolInput!):CommerceRolDto!
+    deleteCommerceRole(input: Int!): Boolean!
+}

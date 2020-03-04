@@ -1,0 +1,150 @@
+input SkiperWalletInput {
+    id: Int
+    iduser: Int!
+    amount: Float
+    amount_crypto:Float
+    idcurrency: Int!
+    idcountry: Int!
+    minimun: Float!
+    bretirar: Boolean!
+    date_in: DateTime!
+}
+
+input SkiperWalletCreateInput {
+    id: Int
+    iduser: Int!
+    idcurrency: Int!
+    idcountry: Int!
+    minimun: Int
+    bretirar: Boolean 
+    lat: Float!
+    long: Float!
+}
+type SkiperWalletLocalDto {
+    id: Int
+    amount: Float!  
+    date_in: DateTime!
+    minimun: Float!
+    bretirar: Boolean!
+    userID: UserDto
+    currencyID: CurrencyDto
+    countryID: countrieDto
+}
+type SkiperWalletDto {
+    id: Int
+    amount: Float!  
+    amount_crypto: Float!
+    date_in: DateTime!
+    minimun: Float!
+    bretirar: Boolean!
+    userID: UserDto
+    currencyID: CurrencyDto
+    countryID: countrieDto
+}
+type pruebaDto {
+    id: Int
+}
+
+type Alycoin {
+    id: Int
+    amount_crypto:Float    
+    name:String
+    url_img:String
+    price_usd:Float
+    price_local:Float
+    price_crypto:Float
+    priceTravel:Float    
+}
+
+type Dash {
+    id: Int
+    amount_crypto:Float    
+    name:String
+    url_img:String
+    price_usd:Float
+    price_local:Float
+    price_crypto:Float
+    priceTravel:Float
+    change24h:Float
+}
+
+type LiteCoin {
+    id: Int
+    amount_crypto:Float    
+    name:String
+    url_img:String
+    price_usd:Float
+    price_local:Float
+    price_crypto:Float
+    priceTravel:Float
+    change24h:Float
+}
+
+type Bitcoin {
+    id: Int
+    amount_crypto:Float
+    name:String   
+    url_img:String 
+    price_usd:Float 
+    price_local:Float
+    price_crypto:Float 
+    priceTravel:Float
+    change24h:Float
+}
+type Ethereum {
+    id: Int
+    amount_crypto:Float    
+    name:String
+    url_img:String
+    price_usd:Float
+    price_local:Float
+    price_crypto:Float
+    priceTravel:Float
+    change24h:Float
+}
+
+type SkiperWalletCryptoDto {
+    id: Int   
+    date_in: DateTime
+    minimun: Float
+    bretirar: Boolean
+    userID: UserDto
+    currencyID: CurrencyDto
+    countryID: countrieDto
+}
+
+
+type SendDataForPayCrypto {
+    crypto:String
+    concept:String
+    company:String
+    walletReceive:String
+    amounSend:Float
+    numberFact:Int
+    nameUser:String
+    state:Boolean
+    priceUsd:Float
+}
+
+type dataConvert {
+    amountCrypto:Float
+    amountUsd:Float
+    priceCrypto:Float
+}
+
+type Query {
+    skiperwallets: [SkiperWalletDto!]!
+    getAllSkiperWalletsByUserId(iduser: Int!): [SkiperWalletCryptoDto!]!
+    searchSkiperWallet(id:Int):SkiperWalletDto
+    getAmountByCrypto(crypto:Int!, concept:Int!, amount:Float!, iduser:Int!,idcountry:Int!, idpackage:Int!):SendDataForPayCrypto
+    convertBalance(amount: Float!, isoCrypto: String!, lat: Float!, long: Float): dataConvert!
+}
+type Mutation {
+    registerSkiperLocalWallet(input: SkiperWalletCreateInput!):String
+    registerSkiperCryptoWallet(input: SkiperWalletCreateInput!):String
+    updateSkiperWallet(input: SkiperWalletInput): SkiperWalletDto
+    registerDepositWallet(idwallet: Int!,idtransaction: Int!,idpayment_method:Int!, deposit:Float!, is_user:Boolean,description:String!): SkiperWalletDto
+    requestWithdrawalOrTransactionReversed(idwallet: Int!,idtransaction: Int!,idpayment_method:Int!, amount:Float!, description:String!): SkiperWalletDto
+    validateHash(hash:String!, lat:Float!, long:Float!, packageId:Int!, userId:Int!, email:String!,invoice:Int!, is_user:Boolean!):SkiperWalletDto
+    validateHashBuyAlycoin(hash:String!, invoice:Int!, lat:Float!, long:Float!, packageId:Int!, userId:Int!, walletAly:String!):Boolean   
+}

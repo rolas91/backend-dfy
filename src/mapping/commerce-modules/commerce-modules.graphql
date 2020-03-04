@@ -1,0 +1,21 @@
+type CommerceModulesDto {
+    id: Int
+    name: String
+}
+
+input CommerceModulesInput {
+    id: Int
+    name: String!
+}
+
+type Query {
+    getAllCommerceModules: [CommerceModulesDto!]!
+    getCommerceModulesWithPages(page:Int): [CommerceModulesDto!]!
+    getCommerceModuleById(id:Int): CommerceModulesDto!
+}
+
+type Mutation {
+    registerCommerceModule(input:CommerceModulesInput!): CommerceModulesDto!
+    updateCommerceModule(input:CommerceModulesInput!): CommerceModulesDto!
+    deleteCommerceModule(id:Int!):Boolean!
+}

@@ -1,0 +1,25 @@
+type CategoryLevelDto {
+    id: Int
+    description: String
+    percentage: Float
+}
+
+input CategoryLevelInput {
+    description: String!
+    percentage: Float!
+}
+
+input CategoryLevelUpdate {
+    id: Int!
+    categoryLevel: CategoryLevelInput!
+}
+
+type Query {
+    getAllCategoryLevel: [CategoryLevelDto!]!
+    getCategoryLevelById(id:Int!): CategoryLevelDto!
+}
+
+type Mutation {
+    registerCategoryLevel(input: CategoryLevelInput): CategoryLevelDto!
+    updateCategoryLevel(input: CategoryLevelUpdate): CategoryLevelDto!
+}

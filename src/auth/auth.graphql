@@ -1,0 +1,63 @@
+
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+type ErrorResponse {
+  message: String
+  status: Int
+  ok: Boolean
+}
+
+type SignResponse {
+  data: SignInOk
+  error: ErrorResponse
+}
+
+input signInDto {
+  email: String!
+  password: String!
+}
+
+type SignInOk {
+  token: String
+  firstname: String
+  lastname: String
+  username: String
+  email: String
+  phone_number: String
+  avatar: String
+  country: countrieDto
+  city: citiesDto
+  commerce: CommerceDto
+  vehicle: SkiperVehicleDto
+  wallet: SkiperWalletDto
+  currency:CurrencyDto
+  active_city: Boolean
+}
+
+input twilioDto {
+  phone_number: String!
+  channel: String
+  code: String
+}
+
+type ResetDto{
+    error: ErrorResponse
+    data: UserDto
+}
+
+type Subscription {
+  userLogged: SignResponse
+}
+
+type Mutation {
+  signin(input: signInDto!, lat:Float!, lng:Float!): SignResponse!
+  signup(input: UserInput!): SignResponse!
+  send_code(sendcode: twilioDto!): ErrorResponse!
+  verify_code(verifycode: twilioDto!): ErrorResponse!
+  reset_password(phone_number: String!): ResetDto!
+  editPassword(input: UserUpdatePassword!): ErrorResponse!
+  logout(id: Int!): Boolean
+}

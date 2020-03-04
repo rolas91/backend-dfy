@@ -1,0 +1,19 @@
+input VehicleYearsInput {
+    id: Int
+    year: DateTime!
+}
+
+type VehicleYearsDto {
+    id: Int!
+    year: DateTime
+}
+
+type Query {
+    vehicleyears: [VehicleYearsDto!]!
+    searchVehicleYears(id: Int): VehicleYearsDto
+}
+
+type Mutation {
+    registerVehicleYear(input: VehicleYearsInput): VehicleYearsDto!
+    updateVehicleYear(input: VehicleYearsInput!): VehicleYearsDto
+ }

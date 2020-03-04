@@ -1,0 +1,35 @@
+
+input UsersAddressInput {
+    id: Int
+    iduser: Int!
+    placeid: String!
+    id_cat_place_user: Int!
+    lat: Float!
+    lng: Float!
+    address: String!
+    apt_house_number: String
+    point_references: String
+}
+
+type UsersAddressDto {
+    
+    id: Int
+    placeid: String
+    lat: Float
+    lng: Float
+    address: String
+    apt_house_number: String
+    point_references: String
+    catplaceuser: CatPlacesUsersDto
+    user: UserDto
+}
+
+type Query {
+    getAllUsersAddress: [UsersAddressDto!]!
+    getUsersAddressById(id:Int!): UsersAddressDto
+    getUsersAddressByUser(iduser:Int!): [UsersAddressDto]
+}
+
+type Mutation {
+    registerUsersAddress(input: UsersAddressInput): UsersAddressDto
+}

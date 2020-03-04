@@ -1,0 +1,17 @@
+input CountryPaymentCurrencyInput {
+    id: Int
+    idcountry: Int
+    idpayment: Int
+    idcurrency: Int
+}
+
+type CountryPaymentCurrencyDto {
+    id: Int
+    countrie: countrieDto
+    paymentmethod: PaymentMethodDto
+    currency: CurrencyDto
+}
+type Query {
+    countrypaymentcurrency:[CountryPaymentCurrencyDto]
+    searchcountrypaymentcurrency(id:Int): CountryPaymentCurrencyDto
+}

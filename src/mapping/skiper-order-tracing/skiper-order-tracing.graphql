@@ -1,0 +1,28 @@
+type SkiperOrderTracingDto {
+    id: Int
+    datetracing: DateTime
+    orderStatus: SkiperOrdersStatusDto!
+    order: SkiperOrderDto!
+}
+
+input SkiperOrderTracingInput {
+    orderStatusID: Int!
+    orderID: Int!
+}
+
+type OrderTracingResponse {
+    data: SkiperOrderTracingDto
+    error: ErrorResponse
+}
+
+type Query {
+    getAllOrderTracing: [SkiperOrderTracingDto!]!
+}
+
+type Mutation {
+    registerOrderTracing(input: SkiperOrderTracingInput!): SkiperOrderTracingDto
+}
+
+type Subscription {
+    skiperOrders(idcomercio: Int!): SkiperOrderDto!
+}

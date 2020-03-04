@@ -1,0 +1,56 @@
+input CommerceInput {
+    id: Int
+    namecommerce: String!
+    identification_ruc: String!
+    phone: String
+    address: String!
+    manager: String!
+    state: Boolean
+    lat: String
+    lon: String
+    url_art: String
+    url_logo: String
+    skiperAgentID: Int
+    catCommerceID: Int!
+    countryID: Int!
+    cityID: Int!
+}
+
+type CommerceDto {
+    id: Int
+    namecommerce: String!
+    identification_ruc: String!
+    phone: String
+    address: String!
+    manager: String!
+    state: Boolean
+    lat: String!
+    lon: String!
+    url_art: String
+    url_logo: String
+    skiperAgent: SkiperAgentDto!
+    catCommerce: SkiperCatCommerceDto!
+    country:countrieDto!
+    city:citiesDto!
+    skiperCatProductsCommerce: [SkiperCatProductDto!]!    
+}
+
+type UserWithoutCommerceDto {
+    firstname: String
+    lastname: String
+    skiperAgent: SkiperAgentDto
+}
+
+type Query {
+    commerces: [CommerceDto!]!
+    commerceById(id:Int!): CommerceDto
+    CommercesIntoRadio(latitud: Float!, longitud: Float!, radio: Int!,id_category_product:Int): [CommerceDto]
+    getcommerceByCoordinates(latitud: Float!, longitud: Float!,id_category_product:Int): [CommerceDto]
+    getUserWithoutCommerce: [UserWithoutCommerceDto]
+    getCommercesBySponsorId(id_user: Int!, id_category_commerce: Int): [CommerceDto]
+}
+
+type Mutation {
+    registerCommerce(input: CommerceInput): CommerceDto!
+    registerCommerceTransaction(user: UserInput,agent:AgentInput,commerce:CommerceInput): ErrorResponse!
+ }

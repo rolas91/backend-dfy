@@ -1,0 +1,28 @@
+type UsersCommissionsDto {
+    id: Int
+    amount: Float
+    price_btc: Float
+    paidout: Boolean
+    date_in: DateTime
+    user_sponsor: UserDto
+    user_referred: UserDto
+    country: countrieDto
+    category_level: CategoryLevelDto
+    currency: CurrencyDto
+}
+
+input UsersCommissionsInput {
+    iduser_sponsor: Int!
+    iduser_referred: Int!
+    idcountry_referred: Int!
+    idcat_level: Int!
+    idcrypto_currency: Int!
+    amount: Float!
+    price_btc: Float!
+    paidout: Boolean
+    date_in: DateTime!
+}
+
+type Query {
+    getAllUsersComissionsByUserId(id_user:Int!): [UsersCommissionsDto]
+}

@@ -1,0 +1,29 @@
+input SkiperTravelsTracingInput {
+    idtravel: Int!
+    idtravelstatus: String!
+    lat: Float!
+    lng: Float!
+    fecha: DateTime
+}
+
+type SkiperTravelsTracingDto {
+    id: Int
+    travel: SkiperTravelsDto
+    lat: Float
+    lng: Float
+    travelstatus: SkiperTravelsStatusDto
+    datetracing: DateTime 
+}
+
+type Query {
+    skipertravelstracing: [SkiperTravelsTracingDto!]
+}
+
+type Mutation {
+    registerTravelsTracing(input: SkiperTravelsTracingInput!, lat_final_seggested:Float, lng_final_seggested:Float,address_suggested:String, distance:Float,total:Float, duration:Float ): SkiperTravelsTracingDto!
+    
+}
+
+type Subscription {
+    skiperTravel(idusuario: Int!): SkiperTravelsDto!
+}

@@ -1,0 +1,23 @@
+input SkiperVehicleAgentInput {
+    id:Int
+    idagent:Int!
+    idvehicle: Int!
+    isowner: Int!
+}
+
+type SkiperVehicleAgentDto {
+    id: Int
+    skiperAgent: SkiperAgentDto
+    skiperVehicle: SkiperVehicleDto
+}
+
+type Query {
+    SkiperVehicleAgent: [SkiperVehicleAgentDto!]!
+    getSkiperVehicleById(id: Int!): SkiperVehicleDto
+    getBySkiperAgentId(id: Int!): SkiperVehicleDto
+}
+
+type Mutation {
+    registerSkiperVehicleAgent(input: SkiperVehicleAgentInput!): SkiperVehicleAgentDto!
+    updateSkiperVehicleAgent(input: SkiperVehicleAgentInput!): SkiperVehicleAgentDto!
+}

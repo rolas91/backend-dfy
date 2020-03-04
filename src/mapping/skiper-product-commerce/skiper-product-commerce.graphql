@@ -1,0 +1,58 @@
+type SkiperProductCommerceDto {
+    id: Int
+    name: String
+    description: String
+    url_img_product: String
+    price: Int
+    isSize: Boolean
+    isAddon: Boolean
+    state: Boolean
+    discount: Int
+    time: Int
+    skiperCommerce: CommerceDto!
+    skiperProducts: SkiperCatProductDto!
+    optionAddon: [OptionAddonDto!]
+}
+
+type ProductCommerceDto {
+    id: Int
+    name: String
+    description: String
+    url_img_product: String
+    price: Int
+    isSize: Boolean
+    isAddon: Boolean
+    state: Boolean
+    discount: Int
+    time: Int
+    skiperCommerce: CommerceDto!
+    skiperProducts: SkiperCatProductDto!
+    optionAddon: [OptionAddonDto!]
+}
+
+input ProductCommerceInput {
+    id: Int
+    name: String
+    description: String
+    url_img_product: String
+    price: Int
+    isSize: Boolean
+    isAddon: Boolean
+    state: Boolean
+    discount: Int
+    skiperCommerceID: Int!
+    skiperCatProductsID: Int!
+}
+
+type Query {
+    productsCommerce: [SkiperProductCommerceDto!]!
+    productsByCommerceId(id:Int!): [ProductCommerceDto!]!
+    productsCommerceWithPagination(page: Int): [SkiperProductCommerceDto!]!
+    productsCommerceById(id: Int): SkiperProductCommerceDto
+    # productsByCommerceId
+}
+
+type Mutation {
+    ChangeStateProducts(id: Int!): Boolean
+    registerProductCommerce(input: ProductCommerceInput): SkiperProductCommerceDto
+}

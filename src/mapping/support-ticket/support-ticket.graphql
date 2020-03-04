@@ -1,0 +1,39 @@
+input SupportTicketInput {
+    id: Int
+    title: String!
+    description: String!
+    update_at: DateTime
+    created_at: DateTime
+    asigned_id: Int!
+    categoryID: Int!
+    kindID: Int!
+    userID: Int!
+    appID: Int!
+    priorityID: Int!
+    statusID: Int!
+}
+
+type SupportTicketDto {
+    id: Int!
+    title: String
+    description: String
+    update_at: DateTime
+    created_at: DateTime
+    asigned_id: Int
+    category: TicketCategoryDto!
+    kind: KindTicketDto!
+    user: UserDto!
+    app: AppsDto!
+    priority: TicketPriorityDto!
+    status: TicketStatusDto!
+}
+
+type Query {
+    supporttickets: [SupportTicketDto!]!
+    searchSupportTicket(id: Int): SupportTicketDto
+}
+
+type Mutation {
+    registerSupportTicket(input: SupportTicketInput!): SupportTicketDto!
+    updateSupportTicket(input: SupportTicketInput!): SupportTicketDto
+}

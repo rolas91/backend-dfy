@@ -1,0 +1,18 @@
+input SkiperSubCatCommerceInput {
+    id: Int
+    name: String
+    id_cat_commerce: Int
+    url_img: String
+}
+
+type SkiperSubCatCommerceDto {
+    id: Int
+    name: String
+    catcommerce: SkiperCatCommerceDto
+    url_img: String
+}
+
+type Query {
+    getAllSkiperSubCatCommerce: [SkiperSubCatCommerceDto!]
+    getCommerceByIdSubCategoryCommerce(id:Int): SkiperSubCatCommerceDto
+}

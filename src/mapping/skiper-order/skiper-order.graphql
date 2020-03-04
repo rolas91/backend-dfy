@@ -1,0 +1,40 @@
+input SkiperOrderInput {
+    id: Int
+    userphone: String!
+    useraddress: String!
+    orderdate: DateTime!
+    totalprice: Int!
+    numitem: Int!
+    userID: Int!
+    commerceID: Int!
+}
+
+type SkiperOrderDto {
+    id: Int!
+    userphone: String
+    useraddress: String
+    orderdate: DateTime
+    totalprice: Int
+    numitem: Int
+    user: UserDto!
+    skiperCommerce: CommerceDto!
+    skiperOrderTracing: [SkiperOrderTracingDto]
+    skiperOrderDetail: [SkiperOrderDetailDto]
+}
+
+
+type Query {
+    skiperorders:[SkiperOrderDto!]!
+    searchSkiperOrder(id: Int): SkiperOrderDto
+    skiperNewOrders(idcommerce: Int!): [SkiperOrderDto]
+    skiperCountNewOrders(idcommerce: Int!): Int!
+    skiperOrdersInProcess(idcommerce: Int!): [SkiperOrderDto]
+    skiperCountOrdersInProces(idcommerce: Int!): Int!
+    skiperOrdersFinish(idcommerce: Int!): [SkiperOrderDto]
+}
+
+type Mutation {
+    registerSkiperOrder(input: SkiperOrderInput): SkiperOrderDto!
+    updateSkiperOrder(input: SkiperOrderInput!): SkiperOrderDto!
+    GenereSkiperOrder(inputorder: SkiperOrderInput!, inputorderdetalle: [SkiperOrderDetailInput!]!): SkiperOrderDto!
+}

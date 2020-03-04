@@ -1,0 +1,23 @@
+input SizeProductInput {
+    id: Int
+    description: String
+    extraPrice: Int
+    skiperProductsID: Int!
+}
+
+type SizeProductDto {
+    id: Int
+    description: String
+    extraPrice: Int
+    skiperProducts: SkiperProductCommerceDto
+}
+
+type Query {
+    getAllSizeProduct: [SizeProductDto!]!
+    getSizeProductById(id:Int) :SizeProductDto!
+}
+
+type Mutation {
+    registerSizeProduct(input: SizeProductInput!): SizeProductDto!
+    updateSizeProduct(input: SizeProductInput!): SizeProductDto
+}

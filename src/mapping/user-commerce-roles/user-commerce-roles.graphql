@@ -1,0 +1,21 @@
+type UserCommerceRolesDto {
+    id:Int
+    user: UserDto
+    skiperCommerce: CommerceDto
+    rol: CommerceRolDto
+}
+
+input UserCommerceRolesInput {
+    id: Int
+    userID: Int!
+    skiperCommerceID: Int!
+    rolID: Int!
+}
+
+type Query {
+    allUserCommerceRoles:[UserCommerceRolesDto!]!
+}
+
+type Mutation {
+    registerUserCommerceRol(input: UserCommerceRolesInput): UserCommerceRolesDto!
+}

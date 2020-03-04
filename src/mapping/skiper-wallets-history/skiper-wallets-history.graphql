@@ -1,0 +1,52 @@
+input SkiperWalletsHistoryInput {
+    id: Int
+    idskiperwallet: Int
+    idtransactiontype: Int
+    amount: Float
+    idpayment_methods: Int
+    date_in: DateTime
+    idcurrency: Int
+}
+
+type SkiperWalletsHistoryDto {
+    id: Int
+    skiperwallet: SkiperWalletDto
+    transactiontype: TransactionTypeDto
+    amount: Float
+    paymentmethod: PaymentMethodDto
+    date_in: DateTime
+    currency: CurrencyDto
+}
+
+type GananciaDelDia {
+    ganancia: Float
+    viajes: Int
+}
+
+type Balance {
+     balanceLocal: Float!
+     balanceUSD: Float!
+     balanceInBTC: Float!
+     balanceInLTC: Float!
+     balanceInETH: Float!
+     balanceInDASH:Float!
+}
+type SkiperWallet {
+    id: Int
+    amount: Float
+}
+
+
+type Query {
+    SkiperWalletsHistory: [SkiperWalletsHistoryDto]
+    searchSkiperWalletHistory(id: Int!): SkiperWalletsHistoryDto
+    getGanaciaDelDia(idwallet: Int!,lat: Float!,lng: Float!,flat: Boolean): GananciaDelDia
+    getBalanceEnabled(idwallet: Int!, lat:Float!, long:Float!): Balance      
+}
+
+type Mutation {
+    registerSkiperWalletHistory(input: SkiperWalletsHistoryInput): SkiperWalletsHistoryDto
+    WithdrawalToInternalWallet(walletId:Int!, amount:Float!):Boolean
+    TransferToOtherUser(emailTo:String!, walletId:Int!, amount:Float!, isoTo:String!, lat:Float!, long:Float!):Boolean
+    withdrawalToExternalWallet(walletId:Int!, userwalletAddressId:Int!):Boolean
+}

@@ -1,0 +1,30 @@
+input SkiperCatProductInput {
+    id: Int
+    name: String
+    description: String
+    url_img_product: String
+    skiperCommerceID: Int!
+}
+
+type SkiperCatProductDto {
+    id: ID
+    name: String
+    description: String
+    url_img_product: String
+    skiperCommerce: CommerceDto
+    skiperProductCommerce: [SkiperProductCommerceDto!]
+}
+
+
+
+type Query {
+  categoriesProduct: [SkiperCatProductDto!]!
+  categoryProductById(id: Int!): SkiperCatProductDto
+  categoryProductsWithPagination(page: Int!): [SkiperCatProductDto!]!
+  searchCategoryProduct(id: Int): SkiperCatProductDto
+  CategoryProductByCommerceId(idcommerce: Int!):[SkiperCatProductDto]
+}
+
+type Mutation {
+    registerCatProductCommerce(input:SkiperCatProductInput!):SkiperCatProductDto!
+}

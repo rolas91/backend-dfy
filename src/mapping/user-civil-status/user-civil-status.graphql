@@ -1,0 +1,8 @@
+type UserCivilStatusDto {
+    id: Int
+    name: String
+}
+
+type Query {
+    getCivilStatus: [UserCivilStatusDto!]!
+}

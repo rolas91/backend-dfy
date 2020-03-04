@@ -1,0 +1,23 @@
+type CommerceOperationsDto {
+    id: Int
+    name: String
+    commerceModule: CommerceModulesDto
+}
+
+input CommerceOperationsInput {
+    id: Int
+    name: String
+    commerceModuleID: Int!
+}
+
+type Query {
+    getAllCommerceOperation: [CommerceOperationsDto!]!
+    getAllCommerceOperationWithPagination(page: Int!): [CommerceOperationsDto!]!
+    getAllCommerceOperationById(id: Int!): CommerceOperationsDto!
+}
+
+type Mutation {
+    registerCommerceOperation(input: CommerceOperationsInput!): CommerceOperationsDto!
+    updateCommerceOperation(input: CommerceOperationsInput!): CommerceOperationsDto!
+    deleteCommerceOperation(id: Int!): Boolean!
+}

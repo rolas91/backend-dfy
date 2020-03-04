@@ -1,0 +1,21 @@
+input SkiperOrdersStatusInput {
+    id: Int
+    name: String!
+    indicador: String
+}
+
+type SkiperOrdersStatusDto {
+    id: Int!
+    name: String
+    indicador: String
+}
+
+type Query {
+    skiperordersstatus: [SkiperOrdersStatusDto!]!
+    searchSkiperOrdersStatusDto(id: Int): SkiperOrdersStatusDto
+}
+
+type Mutation {
+    registerSkiperOrdersStatus(input: SkiperOrdersStatusInput): SkiperOrdersStatusDto!
+    updateSkiperOrdersStatus(input: SkiperOrdersStatusInput!): SkiperOrdersStatusDto
+ }

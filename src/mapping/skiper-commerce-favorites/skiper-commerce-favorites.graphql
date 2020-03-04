@@ -1,0 +1,25 @@
+
+type CommerceFavoritesDto {
+
+    id: Int
+    skiperCommerce: CommerceDto
+}
+
+input CommerceFavoriteInput {
+    # id: Int
+    user_id: Int!
+    commerce_id: Int!
+}
+
+type OkDto {
+    ok: Boolean
+}
+
+type Query {
+    getAllCommerceFavoriteByUserId(id_user:Int!): [CommerceFavoritesDto!]!
+}
+
+type Mutation {
+    registerCommerceFavorite(input: CommerceFavoriteInput): OkDto
+    removeCommerceFavorite(id: Int!): OkDto
+}

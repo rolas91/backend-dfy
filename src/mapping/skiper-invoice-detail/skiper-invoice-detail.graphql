@@ -1,0 +1,16 @@
+type SkiperInvoiceDetailInput {
+    id: Int
+    idanyservice: Int
+    total: Float
+}
+
+type SkiperInvoiceDetailDto {
+    id: Int
+    invoice: SkiperUserInvoiceDto
+    anyservice: SkiperTravelsDto
+    total: Float
+}
+
+type Query {
+    getInvoinceByIdservice(idservice:Int): SkiperInvoiceDetailDto
+}

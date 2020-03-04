@@ -1,0 +1,5 @@
+type CatPlacesUsersDto{
+    id: Int
+    name: String
+    url_img: String
+}

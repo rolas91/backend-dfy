@@ -1,0 +1,19 @@
+input VehicleModelsInput {
+    id: Int
+    name: String!
+}
+
+type VehicleModelsDto {
+    id: Int!
+    name: String
+}
+
+type Query {
+    vehiclemodels: [VehicleModelsDto!]!
+    searchVehicleModels(id: Int): VehicleModelsDto
+}
+
+type Mutation {
+    registerVehicleModel(input: VehicleModelsInput): VehicleModelsDto!
+    updateVehicleModel(input: VehicleModelsInput!): VehicleModelsDto
+ }

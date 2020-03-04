@@ -1,0 +1,19 @@
+input KindTicketInput {
+    id: Int
+    name: String!
+}
+
+type KindTicketDto {
+    id: Int!
+    name: String
+}
+
+type Query {
+    kindtickets: [KindTicketDto!]!
+    searchKindTickets(id: Int): KindTicketDto
+}
+
+type Mutation {
+    registerKindTicket(input: KindTicketInput): KindTicketDto!
+    updateKindTicket(input: KindTicketInput!): KindTicketDto
+ }

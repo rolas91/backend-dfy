@@ -1,0 +1,10 @@
+type DriverScheduleDto {
+    id: Int
+    start_time: DateTime
+    final_time: DateTime
+    turn: String
+}
+
+type Query {
+    getAllSkiperDriverSchedule: [DriverScheduleDto!]!
+}

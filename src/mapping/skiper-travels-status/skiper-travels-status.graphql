@@ -1,0 +1,23 @@
+input SkiperTravelsStatusInput {
+    id: Int
+    name: String!
+    indicator: String!
+    prevstatus: Int!
+    errorstatusprev: String!
+    codigo: String!
+    bgenerafactura: Boolean!
+}
+
+type SkiperTravelsStatusDto {
+    id: Int
+    name: String
+    indicator: String
+    prevstatus: Int
+    errorstatusprev: String
+    codigo: String
+    bgenerafactura: Boolean
+}
+
+type Query {
+    getAllSkiperTravelStatus: [SkiperTravelsStatusDto!]
+}

@@ -1,0 +1,10 @@
+type VehicleCatalogDto {
+    id: Int
+    name: String
+    url_img_vehicle: String
+}
+
+type Query {
+    getAllVehicleCatalog: [VehicleTrademarkDto!]!
+    getVehicleCatalogById(id:Int!): VehicleTrademarkDto!
+}

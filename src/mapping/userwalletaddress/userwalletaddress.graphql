@@ -1,0 +1,26 @@
+input UserWalletAddressInput {
+    id: Int
+    payaddress: String
+    platformName: String
+    userId: Int    
+    currencyId: Int     
+}
+
+type UserWalletAddressDto {
+    id: Int
+    payaddress: String
+    platformName: String
+    user: UserDto  
+    currency:CurrencyDto
+}
+
+type Mutation {
+    DeleteUserWallet(id:Int!):Boolean
+    RegisterUserWallet(input:UserWalletAddressInput!,lat:Float!,long:Float!):Boolean    
+}
+type Query {
+    getUserWallet:UserWalletAddressDto
+    getUserWalletById(id:Int!):UserWalletAddressDto
+    getPaymentWithdrawalMethodByUserId(userId:Int!):[UserWalletAddressDto]
+
+}
